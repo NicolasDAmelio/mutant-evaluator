@@ -4,10 +4,7 @@ import com.ndamelio.mutant.dao.DNASequence;
 import com.ndamelio.mutant.controller.MutantController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -23,9 +20,14 @@ public class MutantBoundary {
         this.mutantController = mutantController;
     }
 
-    @PostMapping()
+    @PostMapping
     public Object checkDNA(@RequestBody @Valid DNASequence dnaSequence) throws Exception {
         return mutantController.isMutant(dnaSequence.getDna());
+    }
+
+    @GetMapping("/stats")
+    public Object statsHumans() {
+        return mutantController.stats();
     }
 
 }

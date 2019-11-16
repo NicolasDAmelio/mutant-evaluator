@@ -1,5 +1,6 @@
 package com.ndamelio.mutant.controller;
 
+import com.ndamelio.mutant.dao.Stats;
 import com.ndamelio.mutant.entity.Mutant;
 import com.ndamelio.mutant.entity.Human;
 import com.ndamelio.mutant.config.MutantInvalidDNAException;
@@ -10,6 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.regex.Pattern;
 
@@ -102,6 +104,17 @@ public class MutantController {
         if (dnaEvaluator.bottomDiagonalsFromRightCheckWithoutMainDiagonal(dnaSequence)) return true;
         if (dnaEvaluator.topDiagonalsFromLeftCheckWithMainDiagonal(dnaSequence)) return true;
         return dnaEvaluator.topDiagonalsFromRightCheckWithMainDiagonal(dnaSequence);
+    }
 
+    /**
+     * Este metodo busca cantidad de humanos verificados, cuantos de ellos son mutantes, y el ratio entre ambos.
+     *
+     * @return com.ndamelio.mutant.dao.Stats, con informacion estadistica de los humanos evaluados.
+     */
+    public Stats stats() {
+        BigDecimal mutant = mutantRepository.countByHumanType(Human.MUTANT);
+        BigDecimal humans = mutantRepository.countAllBy();
+        Stats stats = new Stats(mutant, humans);
+        return stats;
     }
 }
