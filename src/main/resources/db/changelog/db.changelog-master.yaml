@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1573889086742-1
+      author: nicolasdamelio (generated)
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    primaryKeyName: mutantPK
+                  name: mutant_id
+                  type: INT
+              - column:
+                  name: dna
+                  type: VARCHAR(255)
+              - column:
+                  name: hash_dna
+                  type: INT
+              - column:
+                  name: human_type
+                  type: VARCHAR(255)
+            tableName: mutant
+  - changeSet:
+      id: 1573889086742-2
+      author: nicolasdamelio (generated)
+      changes:
+        - addUniqueConstraint:
+            columnNames: hash_dna
+            constraintName: UC_MUTANTHASH_DNA_COL
+            tableName: mutant

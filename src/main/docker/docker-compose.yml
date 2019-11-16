@@ -1,0 +1,16 @@
+services:
+    db:
+        container_name: mutant-db
+        networks:
+            - net
+        image: mysql
+        environment:
+            - MYSQL_ROOT_PASSWORD=mercadolibre
+            - MYSQL_DATABASE=mutant
+            - MYSQL_USER=mercadolibre
+            - MYSQL_PASSWORD=mercadolibre
+        ports:
+            - "3306:3306"
+networks:
+    net:
+        driver: bridge
