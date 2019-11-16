@@ -1,0 +1,18 @@
+version: 0.2
+phases:
+  pre_build:
+    commands:
+      - TAG="$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | head -c 8)"
+  build:
+    commands:
+      - mvn package -P common,prod -Dspring.profiles.active=prod -DskipTests=true
+  post_build:
+    commands:
+      - printf '%s' $TAG > target/build.txt
+artifacts:
+  files:
+    - target/ROOT.jar
+    - target/buildspec.yml
+    - target/Dockerfile
+    - target/build.txt
+  discard-paths: yes
