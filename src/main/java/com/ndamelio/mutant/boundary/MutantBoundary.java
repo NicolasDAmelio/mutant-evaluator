@@ -1,10 +1,8 @@
 package com.ndamelio.mutant.boundary;
 
 import com.ndamelio.mutant.config.MutantForbiddenException;
-import com.ndamelio.mutant.dao.DNASequence;
 import com.ndamelio.mutant.controller.MutantController;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.ndamelio.mutant.dao.DNASequence;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
