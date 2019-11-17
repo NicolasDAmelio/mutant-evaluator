@@ -26,3 +26,5 @@ La URL para invocar la api es:
 ```
 
 (GET) https://mercadolibre.ndamelio.com/stats
+
+En el application-prod estan las creds para acceder a la BDD cloud.
