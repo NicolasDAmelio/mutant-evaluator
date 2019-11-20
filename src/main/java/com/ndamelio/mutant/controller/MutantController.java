@@ -78,7 +78,7 @@ public class MutantController {
             String dnaRow = dnaSequence[i];
             if (dnaRow.length() != length) {
                 LOG.info("Longitud de la fila del ADN debe ser igual a la cantidad de filas (NxN). Expected: {} -- Found: {}.", length, dnaRow.length());
-                throw new MutantInvalidDNAException("Longitud de la fila " + i + " debe ser igual a cantidad de filas. Debe ser NxN");
+                throw new MutantInvalidDNAException("Longitud de la fila " + (i+1) + " debe ser igual a cantidad de filas. Debe ser NxN");
             } else if (!DNA_BASE_PATTERN.matcher(dnaRow).matches()) {
                 LOG.info("Los unicos caracteres permitidos en el ADN son [A, T, C, G]. Found {}", dnaRow);
                 throw new MutantInvalidDNAException("Los unicos caracteres permitidos en el ADN son [A, T, C, G]. Found " + dnaRow);
