@@ -28,3 +28,10 @@ La URL para invocar la api es:
 (GET) https://mercadolibre.ndamelio.com/stats
 
 En el application-prod estan las creds para acceder a la BDD cloud.
+
+### CODE COVERAGE
+
+Para la ejecución de test: ```mvn test jacoco:report```
+Y en `target/site/jacoco/index.html` esta el reporte de test coverage, adjunto imagen:
+
+![Reporte Test Coverage](src/main/resources/report_jacoco.png?raw=true "Reporte")
